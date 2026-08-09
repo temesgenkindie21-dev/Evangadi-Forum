@@ -17,32 +17,32 @@ function Footer() {
             />
 
             <div className="flex items-center gap-5 text-3xl">
-              <a
-                href="https://www.facebook.com/evangaditech"
+              <Link
+                to="https://www.facebook.com/evangaditech"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-[#FE8402] transition-colors duration-300"
               >
                 <i className="ri-facebook-circle-line"></i>
-              </a>
+              </Link>
 
-              <a
-                href="https://www.youtube.com/"
+              <Link
+                to="https://www.youtube.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-[#FE8402] transition-colors duration-300"
               >
                 <i className="ri-youtube-fill"></i>
-              </a>
+              </Link>
 
-              <a
-                href="https://www.instagram.com/evangaditech/"
+              <Link
+                to="https://www.instagram.com/evangaditech/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-[#FE8402] transition-colors duration-300"
               >
                 <i className="ri-instagram-line"></i>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -54,34 +54,34 @@ function Footer() {
 
             <ul className="space-y-3 text-gray-300">
               <li>
-                <a
-                  href="/how-it-works"
+                <Link
+                  to="/how-it-works"
                   className="hover:text-[#FE8402] transition-colors duration-300"
                 >
                   How it Works
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a
-                  href="https://www.evangadi.com/legal/terms/"
+                <Link
+                  to="https://www.evangadi.com/legal/terms/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#FE8402] transition-colors duration-300"
                 >
                   Terms of Service
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a
-                  href="https://www.evangadi.com/legal/privacy/"
+                <Link
+                  to="https://www.evangadi.com/legal/privacy/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#FE8402] transition-colors duration-300"
                 >
                   Privacy Policy
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
