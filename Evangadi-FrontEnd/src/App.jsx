@@ -1,14 +1,13 @@
 import React from "react";
-import Header from "./Components/Header/Header";
-import Footer from "./Components/Footer/Footer";
-import Main from "./pages/MainPage/MainPage";
+import Router from "./Router/Router";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
     <>
-      {/* <Header /> */}
-      <Main />
-      {/* <Footer /> */}
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
     </>
   );
 }
