@@ -26,7 +26,6 @@ function Section() {
           ) : (
             <Register key="Register" toggleForm={toggleForm} />
           )}
-
           <About />
         </div>
       </div>

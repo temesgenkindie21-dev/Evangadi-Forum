@@ -6,7 +6,11 @@ import { useEffect } from "react";
 
 function header() {
   const [scroll, setScroll] = useState(false);
-
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const removeToken = () => {
+    localStorage.removeItem("token");
+    setToken(null);
+  };
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY >= 35) {
@@ -45,7 +49,9 @@ function header() {
             </Link>
 
             <button className="ml-5 p-2.5 bg-[rgb(81,108,240)] hover:bg-[rgb(254,132,2)] rounded-[5px] w-[130px] text-white">
-              <Link to={"/login"}>{"Sign In"}</Link>
+              <Link to={"/login"} onClick={token ? removeToken : undefined}>
+                {token ? "Log Out" : "Sign In"}
+              </Link>
             </button>
           </div>
         </div>

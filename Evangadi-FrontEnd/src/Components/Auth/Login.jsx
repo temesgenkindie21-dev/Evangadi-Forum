@@ -1,15 +1,43 @@
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axiosBase from "../../Utility/axios";
 
 function Login({ toggleForm }) {
   const [errorMsg, setErrorMsg] = useState("");
   const emailDom = useRef();
   const passwordDom = useRef();
 
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const emailValue = emailDom.current.value;
     const passwordValue = passwordDom.current.value;
+
+    if (!emailValue || !passwordValue) {
+      setErrorMsg("Please provide all required information");
+      return;
+    }
+    try {
+      const { data } = await axiosBase.post("/users/login", {
+        email: emailValue,
+        password: passwordValue,
+      });
+
+      if (data?.token) {
+        localStorage.setItem("token", data.token);
+        emailDom.current.value = "";
+        passwordDom.current.value = "";
+        alert("Login successful");
+        navigate("/home");
+      }
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+      setErrorMsg(
+        error?.response?.data?.msg || "Something went wrong. Please try again.",
+      );
+    }
   };
   return (
     <div className="h-[420px] w-[602px] bg-white rounded-[10px] shadow-md">

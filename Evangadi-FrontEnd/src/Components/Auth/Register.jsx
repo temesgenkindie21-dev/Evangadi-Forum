@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import axiosBase from "../../Utility/axios";
 import { useState } from "react";
 
 function Register({ toggleForm }) {
@@ -11,6 +11,7 @@ function Register({ toggleForm }) {
   const emailDom = useRef();
   const passwordDom = useRef();
 
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const userNameValue = userNameDom.current.value;
@@ -28,6 +29,22 @@ function Register({ toggleForm }) {
     ) {
       setErrorMsg("Please provide all required information");
       return;
+    }
+    try {
+      await axiosBase.post("/users/register", {
+        userName: userNameValue,
+        firstName: firstNameValue,
+        lastName: lastNameValue,
+        email: emailValue,
+        password: passwordValue,
+      });
+      alert("register successfull, please logIn");
+      navigate(toggleForm());
+    } catch (error) {
+      console.error(error);
+      setErrorMsg(
+        error?.response?.data?.msg || "Something went wrong. Please try again.",
+      );
     }
   };
 
